@@ -1,0 +1,25 @@
+{
+  "name": "adventuresomebamboo",
+  "version": "1.0.0",
+  "description": "usda api visualization app",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fvntr/AdventuresomeBamboo.git"
+  },
+  "keywords": [
+    "usda",
+    "visualization",
+    "react",
+    "d3"
+  ],
+  "author": "phillip ventura, cassey patterson, doris hernandez, demesheo wilson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fvntr/AdventuresomeBamboo/issues"
+  },
+  "homepage": "https://github.com/fvntr/AdventuresomeBamboo#readme",
+  "dependencies": {
+    "sequelize": "^3.5.1"
+  }
+}
