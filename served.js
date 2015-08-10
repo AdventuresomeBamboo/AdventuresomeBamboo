@@ -2,6 +2,8 @@
 var http = require('http');
 //Requiring express JS for easy routing
 var express = require('express');
+//
+var path = require('path')
 //Setting router as variable to use express methods
 var app = express();
 //Creating the router
@@ -20,11 +22,18 @@ var server = http.createServer(handleRequest);
 
 //Lets start our server
 app.listen(PORT, function(){
-    //Callback triggered when server is successfully listening. Hurray!
+    //Callback triggered when server is successfully listening.
     console.log("Server listening on: http://localhost:%s", PORT);
 })
 
 // Routing
+app.use('/', express.static(__dirname + '/'));
 app.get('/',function(req, res){
-  res.sendFile('/index.html')
+  res.sendFile(path.join(__dirname + '/'));
+})
+
+app.post('/',function(req, res){
+  res.on('data', function(chunk){
+    console.log(chunk)
+  })
 })
