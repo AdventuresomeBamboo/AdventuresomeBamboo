@@ -16,9 +16,8 @@ There is currently no platform that visualizes USDA API data. This app is an eff
 
 ## Solution ##
 
-Through the use of maps and graphs and customized ranges, USDA API data is presented in a way that is easily understood by the use.  
+Through the use of maps and graphs and customized ranges, USDA API data is presented in a way that is easily understood by the user.  
 
 ## How to Get Started ##
 
-Just log-in, input the info you want to lookup via the designated search fields, and we do the rest.  
-
+Just log-in, input the info you want to lookup via the designated search fields, and the analyze the rendered graphs. 
