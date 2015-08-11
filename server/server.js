@@ -27,8 +27,9 @@ app.listen(PORT, function(){
 })
 
 // Routing
-app.get('/',function(req, res){
-  res.sendFile(path.join(__dirname + '/../client/'));
+app.use('/', express.static(__dirname + '/../client'))
+router.get('/',function(req, res){
+  res.sendFile('/');
 })
 
 app.post('/',function(req, res){
