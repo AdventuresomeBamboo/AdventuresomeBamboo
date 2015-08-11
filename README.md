@@ -1,10 +1,10 @@
-# USDA TGA HACKATHON APP #
+# AdenturesomeBamboo App#
  
 ## Heading ##
-USDA API Visualizer
+Dep of Agriculture API Visualizer
 
 ## Sub-Heading ##
-Providing a way to available the agricultural data provided by the USDA. 
+Providing a way to available the agricultural data provided by the Department of Agriculture. 
 
 ## Summary ##
 
@@ -16,7 +16,7 @@ There is currently no platform that visualizes USDA API data. This app is an eff
 
 ## Solution ##
 
-Through the use of maps and graphs and customized ranges, USDA API data is presented in a way that is easily understood by the user.  
+Through the use of maps and graphs and customized ranges, data is presented in a way that is easily understood by the user.  
 
 ## How to Get Started ##
 
