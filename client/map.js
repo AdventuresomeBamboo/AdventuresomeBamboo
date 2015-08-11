@@ -16,12 +16,14 @@ jQuery(document).ready(function() {
 		{ 
 			$('#stateInfo #stateName').text(region);
 			$.ajax({
-				url:'http://localhost:5678/state',
-				dataType: 'text',
+				url:'http://localhost:5678/state?'+region,
 				type: 'post',
-				data: region.toString(),
-				success: function(data){
-					console.log(data)
+				data: {
+					'state' : region
+				},
+				dataType: 'text',
+				success: function (data){
+					console.log('Success')
 				}
 			})
 		}
