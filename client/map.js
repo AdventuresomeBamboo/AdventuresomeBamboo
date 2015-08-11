@@ -15,6 +15,17 @@ jQuery(document).ready(function() {
 		onRegionClick: function(element, code, region)
 		{ 
 			$('#stateInfo #stateName').text(region);
-			console.log("the clicked state is : ", region);
-		} });
+			$.ajax({
+				url:'http://localhost:5678/state?'+region,
+				type: 'post',
+				data: {
+					'state' : region
+				},
+				dataType: 'text',
+				success: function (data){
+					console.log('Success')
+				}
+			})
+		}
+	});
 });
