@@ -12,7 +12,7 @@ Easily see production of commodities nationwide.
 
 ## Problem ##
 
-This app is an effort to expand upon the lack of visualization platforms that utiliza the series of USDA APIs.
+There is currently no platform that visualizes USDA API data. This app is an effort to provide that service.
 
 ## Solution ##
 

@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/fvntr/AdventuresomeBamboo#readme",
   "dependencies": {
-    "sequelize": "^3.5.1"
+    "sequelize": "^3.5.1",
+    "underscore": "^1.8.3"
   }
 }
