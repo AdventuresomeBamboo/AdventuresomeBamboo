@@ -1,6 +1,6 @@
 var express = require('express');//Requiring express JS for easy routing
 var url = require('url'); // URL handling
-var utils = require('../utils/utils.js'); //Utility-helper functions
+var utils = require('./utils.js'); //Utility-helper functions
 var async = require('async') // Async JS for handling async operations
 
 var root = express.static(__dirname + '/../client');// Set root path for static routes
