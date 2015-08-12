@@ -39,36 +39,12 @@ module.exports.requestHandler = function (route, req, res){
   else if(route === '/crop'){
   //Post request for the crop name
     var production = {};
-    var year = 2010;
+    var year = new Date().getFullYear()-1;
     crop = (url.parse(req.url).query).toUpperCase();
     //need an async loop. BUT dont know how
     async.series([
       //first call without looping
       function(cb){
-        production[year] = utils.showCropInfo(state, cropType, crop, year);
-        cb();
-      },
-      //second call without looping
-      function(cb){
-        year = 2011
-        production[year] = utils.showCropInfo(state, cropType, crop, year);
-        cb();
-      },
-      //third call without looping
-      function(cb){
-        year = 2012
-        production[year] = utils.showCropInfo(state, cropType, crop, year);
-        cb();
-      },
-      //fourth call without looping
-      function(cb){
-        year = 2013
-        production[year] = utils.showCropInfo(state, cropType, crop, year);
-        cb();
-      },
-      //fifth call without looping
-      function(cb){
-        year = 2014
         production[year] = utils.showCropInfo(state, cropType, crop, year);
         cb();
       },

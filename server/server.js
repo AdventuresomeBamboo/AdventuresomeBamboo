@@ -14,6 +14,7 @@ server.listen(PORT, function(){
 //Handled by router.js
 
 app.get('/',function(req, res){
+  console.log('get request made')
   var req = req;
   var res = res;
   router.requestHandler('/', req, res)
