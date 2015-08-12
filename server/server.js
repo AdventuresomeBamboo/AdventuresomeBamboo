@@ -24,7 +24,8 @@ app.listen(PORT, function(){
 })
 
 //Global variables for API request
-var state, crop, cropType, link;
+var state, crop, cropType, link,
+date = new Date().getFullYear();
 /*********************** Routing ****************************/
 
 //Get request
@@ -35,6 +36,9 @@ router.get('*',function(req, res){
 //Post request for the state name
 app.post('/state',function(req, res, next){
   state = (url.parse(req.url).query).toUpperCase();
+  //for testing
+  showCropTypes(state, 'VEGETABLES');
+  //test over
   res.writeHead(200);
   res.end();
 });
@@ -58,13 +62,14 @@ app.post('/cropType',function(req, res, next){
     default:
       break;
   }
+  showCropTypes(state, cropType);
   res.writeHead(200);
   res.end();
 });
 //Post request for the crop name
 app.post('/crop',function(req, res, next){
   crop = (url.parse(req.url).query).toUpperCase();
-  makeApiCall(state, cropType, crop);
+  getCropList(state, cropType, crop);
   res.writeHead(200);
   res.end();
 });
@@ -72,6 +77,23 @@ app.post('/crop',function(req, res, next){
 
 /*********************** Helper Functions ****************************/
 
-var makeApiCall = function (state, cropType, crop){
+var showCropTypes = function (state, cropType){
+  var crops = {};
+  var data = '';
+  var i = 2010;
+  link = 'http://nass-api.azurewebsites.net/api/api_get?source_desc=SURVEY&sector_desc=CROPS&group_desc='+cropType+'&agg_level_desc=STATE&year='+i+'&state_name='+state;
+  request.get(link)
+  .on('data', function(chunk){
+    data += chunk;
+  })
+  .on('end', function(){
+    JSON.parse(data).data.forEach(function(blah){
+      crops[blah.commodity_desc]=true;
+      return console.log(crops);
+    })
+  })
+}
+
+var getCropList = function (state, cropType, crop){
     link = 'http://nass-api.azurewebsites.net/api/api_get?source_desc=SURVEY&sector_desc=CROPS&group_desc='+cropType+'&agg_level_desc=STATE&year=2010&state_name='+state+'&commodity_desc='+crop;
 };
