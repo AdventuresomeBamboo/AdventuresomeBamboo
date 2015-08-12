@@ -39,11 +39,10 @@ router.post('/state',function(req, res, next){
   //will delete from here....
   cropType = 'VEGETABLES'
   var crops = utils.getStateCrops(state, cropType)// <--- for testing purposes only MUST REMOVE IN PRODUCTION
-  .then(console.log(crops))
   //until here for production
+  console.log(crops)
   res.writeHead(200);
   res.end();
-  //next();
 });
 
 //Post request for the cropType

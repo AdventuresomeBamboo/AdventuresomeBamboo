@@ -29,14 +29,13 @@ module.exports.cropTypeSelector = function (cropType){
 
 module.exports.getStateCrops = function (state, cropType){
   var crops = {};// <-- object to hold list of crops
-  var j = 0;
   for( var i = 2010; i < date; i++){
     link = 'http://nass-api.azurewebsites.net/api/api_get?source_desc=SURVEY&sector_desc=CROPS&group_desc='+cropType+'&agg_level_desc=STATE&year='+i+'&state_name='+state;
     request(link, function(err, res, body){
       if (!err && res.statusCode == 200) {
         crops[i] = JSON.parse(body).data[j];
       }
-      j++;
+      console.log(crops)
     });
   }
   return crops;
