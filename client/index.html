@@ -13,11 +13,16 @@
   </head>
   <body>
     <h1 align="center">Title Goes Here</h1>
+    <!-- Setting up where our map is going to go -->
     <div id="vmap" style="width: 600px; height: 400px;"></div>
+    <!-- adding our controller that will add the map -->
     <div ng-app="map" ng-controller="mapController">
+      <!-- should be displaying stateName on click -->
       <h1> {{stateName}} </h1>
     <div id="stateInfo">
+      <!-- should be displaying stateName on click here too -->
         <span ng-bind="stateName"> {{stateName}} </span>
+        <!-- ng repeat crop in crop types below? should display crop type options for each state -->
         <div id="cropInfo" ng-controller="cropTypeController">
         </div>
     </div>
