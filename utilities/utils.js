@@ -1,54 +1,62 @@
-//request handler
-var request = require('request-promise');
-//Requiring server module, for variable access
-var server = require('../server/server.js');
-//Gloabl variable for dynamic date
-var date = new Date().getFullYear();
-//Sets the cropType based on user click
-module.exports.cropTypeSelector = function (cropType){
-  /************* URGENT - WILL NEED TO FORMAT THIS BASED ON CHOICE (4 OPTIONS) *******************/
-  switch(cropType){
-    case 'FIELD': // <-- WILL NEED TO SET THESE CASES BASED ON USER CLICKS
-      cropType = 'FIELD%20CROPS'
-      break;
-    case 'FRUIT':
-      cropType = 'FRUIT%20%26%20TREE%20NUTS'
-      break;
-    case 'HORTICULTURE':
-      cropType = 'HORTICULTURE'
-      break;
-    case 'VEGETABLES':
-      cropType = 'VEGETABLES'
-      break;
-    default:
-      cropType = 'VEGETABLES'
-      break;
-  }
-  return cropType
-};
+var request = require('request'); // Request JS for simple API calls
+var async = require('async') // Async JS for handling async operations
+var currentYear = new Date().getFullYear(); //Dynamically set current year
 
-module.exports.getStateCrops = function (state, cropType){
-  var crops = {};// <-- object to hold list of crops
-  for( var i = 2010; i < date; i++){
-    link = 'http://nass-api.azurewebsites.net/api/api_get?source_desc=SURVEY&sector_desc=CROPS&group_desc='+cropType+'&agg_level_desc=STATE&year='+i+'&state_name='+state;
-    request(link, function(err, res, body){
-      if (!err && res.statusCode == 200) {
-        crops[i] = JSON.parse(body).data[j];
-      }
-      console.log(crops)
-    });
-  }
-  return crops;
-};
+/*********************** Functions ****************************/
 
-module.exports.getProductionValue = function (state, cropType, crop){
-  for( var i = 2010; i < date; i++){
-    link = 'http://nass-api.azurewebsites.net/api/api_get?source_desc=SURVEY&sector_desc=CROPS&group_desc='+cropType+'&agg_level_desc=STATE&year='+i+'&state_name='+state+'&commodity_desc='+crop;
-    request(link, function(err, res, body){
-      if (!err && res.statusCode == 200) {
-        console.log(JSON.parse(body).data[0].value);
-        production[i]=JSON.parse(body).data[0].value;
-      }
-    });
-  }
+module.exports.getCropNames = function (state, cropType){
+  var year = year || 2014;
+  var crops = {}; // <-- holder for the crop names that will be passed in
+  var data = ''; // <-- data hold for parsing
+  link = 'http://nass-api.azurewebsites.net/api/api_get?source_desc=SURVEY&sector_desc=CROPS&group_desc='+cropType+'&agg_level_desc=STATE&state_name='+state+'&year='+year+'&statisticcat_desc=PRODUCTION&class_desc=ALL%20CLASSES&domain_desc=TOTAL&freq_desc=ANNUAL&util_practice_desc=ALL%20UTILIZATION%20PRACTICES&unit_desc=CWT';
+  // ^-- Above is the link for the API request check the vars in the string...
+  async-series([ //<-- handling of asynchronous calls
+    function(cb){
+      request.get(link) // <-- initiates connection to API server
+      .on('data', function(chunk){ // <-- listens for data
+        data += chunk;             // <-- then collects it
+      })
+      .on('end', function(){                // <-- once data is done sending
+        parseData(data).forEach(function(info){ // Parse it
+          crops[info.util_practice_desc] = info.commodity_desc; //add the names to the crops object
+        })
+      })
+      cb();
+    },
+    function(cb){
+      cb();
+      return crops; //return it
+    }
+  ])
 }
+
+module.exports.showCropInfo = function (state, cropType, crop, year){
+  var year = year || 2012;
+  var production = {}; // <-- holder for the production values that will be passed in
+  var data = ''; // <-- data hold for parsing
+  link = 'http://nass-api.azurewebsites.net/api/api_get?source_desc=SURVEY&sector_desc=CROPS&group_desc='+cropType+'&agg_level_desc=STATE&year='+year+'&state_name='+state+'&commodity_desc='+crop;
+  // ^-- Above is the link for the API request check the vars in the string...
+  async-series([//<-- handling of asynchronous calls
+    function(cb){
+      request.get(link)// <-- initiates connection to API server
+      .on('data', function(chunk){ // <-- listens for data
+        data += chunk;              // <-- then collects it
+      })
+      .on('end', function(){        // <-- once data is done sending
+        production[year] = [];
+        parseData(data).forEach(function(info){ 
+        production[year].push(info.value);
+        });
+      })
+      cb();
+    },
+    function  (cb){
+      cb();
+      return dataReturn(production)
+    }
+  ])
+};
+
+ var parseData = function (data){
+  return JSON.parse(data).data;
+};
