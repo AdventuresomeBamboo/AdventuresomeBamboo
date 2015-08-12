@@ -35,7 +35,6 @@ router.get('*',function(req, res){
 //Post request for the state name
 app.post('/state',function(req, res, next){
   state = (url.parse(req.url).query).toUpperCase();
-  console.log(state);
   res.writeHead(200);
   res.end();
 });
