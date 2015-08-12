@@ -5,7 +5,7 @@ angular.module('map', [])
     // Will pass in later to get data from state selection DB
     $scope.stateName = "";
 
-    $scope.display = function(){
+    $scope.init = function(){
       $('#vmap').vectorMap({ map: 'usa_en',
     backgroundColor: '#1640BC',
     borderColor: '#818181',
@@ -35,6 +35,6 @@ angular.module('map', [])
       })
     }
   });
-    }
-    }
-  )
+    };
+    $scope.init();
+    });
