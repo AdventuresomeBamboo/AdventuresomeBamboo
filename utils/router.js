@@ -28,11 +28,11 @@ module.exports.requestHandler = function (route, req, res){
     cropType = //(url.parse(req.url).query).toUpperCase();
     async([
       function(done){
-        waiter(utils.getCropNames('IDAHO', 'VEGETABLES'));
-        done(false);
+        cropList = utils.getCropNames('IDAHO', 'VEGETABLES');
+        done(false);  
       },
-      function(done, result){
-        console.log('crop list received...');
+      function(done){
+        console.log('cropList received')
         done(false);
       }],
       function(err){
