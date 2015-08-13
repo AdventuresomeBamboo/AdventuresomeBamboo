@@ -1,7 +1,8 @@
 var express = require('express');//Requiring express JS for easy routing
 var url = require('url'); // URL handling
 var utils = require('./utils.js'); //Utility-helper functions
-var async = require('async') // Async JS for handling async operations
+var async = require('async'); // Async JS for handling async operations
+var path = require('path');
 
 var root = express.static(__dirname + '/../client');// Set root path for static routes
 
@@ -10,8 +11,8 @@ var state, cropType, crop; // Global vars for API calls
 module.exports.router = express.Router(); //Creating the router
 module.exports.requestHandler = function (route, req, res){
   if(route === '/'){
-    console.log('asking for root')
-    return res.sendFile('/index.html');
+    console.log('asking for root');
+    res.sendFile(path.resolve(__dirname+'/../client/index.html'));
   }
   else if(route === '/state'){
   //Post request for the state name
@@ -34,7 +35,7 @@ module.exports.requestHandler = function (route, req, res){
         res.end(cropList);
         cb();
       }
-    ])
+    ]);
   }
   else if(route === '/crop'){
   //Post request for the crop name
@@ -53,10 +54,10 @@ module.exports.requestHandler = function (route, req, res){
         res.end(production);
         cb();
       }
-    ])
+    ]);
   } else {
-    console.log('invalid route')
-    res.writeHead(404)
-    res.end()
+    console.log('invalid route');
+    res.writeHead(404);
+    res.end();
   }
-}
+};
