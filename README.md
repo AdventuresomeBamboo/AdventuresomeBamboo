@@ -4,7 +4,7 @@
 Dep of Agriculture API Visualizer
 
 ## Sub-Heading ##
-Providing a way to available the agricultural data provided by the Department of Agriculture. 
+Providing a way to make available the agricultural data provided by the Department of Agriculture. 
 
 ## Summary ##
 

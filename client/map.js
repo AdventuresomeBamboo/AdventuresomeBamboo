@@ -18,10 +18,6 @@ jQuery(document).ready(function() {
 			$.ajax({
 				url:'http://localhost:5678/state?'+region,
 				type: 'post',
-				data: {
-					'state' : region
-				},
-				dataType: 'text',
 				success: function (data){
 					console.log('Success')
 				}
