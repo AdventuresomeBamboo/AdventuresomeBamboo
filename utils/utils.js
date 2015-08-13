@@ -36,17 +36,10 @@ var showCropInfo = function (state, cropType, crop, year){
   // ^-- Above is the link for the API request check the vars in the string...
   async([//<-- handling of asynchronous calls
     function(done){
-      request.get(link)// <-- initiates connection to API server
-      .on('data', function(chunk){ // <-- listens for data
-        data += chunk;              // <-- then collects it
-      })
-      .on('end', function(){        // <-- once data is done sending
-        production[year] = [];
-        parseData(data).forEach(function(info){ 
-        production[year].push(info.value);
+      request.get(link, function (err, response, body){// <-- initiates connection to API server
+        production[year] = JSON.parse(body).data;
         });
-      });
-      done();
+      done(false);
     },
     function  (done){
       done();

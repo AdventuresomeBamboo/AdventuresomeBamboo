@@ -14,7 +14,6 @@ http.createServer(app).listen(openPort, function(){
 https.createServer(app).listen(lockPort) // <-- initialize server for https
 
 app.get('*',function(req, res){
-=======
 var http = require('http'); // Require/import the HTTP module
 var app = require('express')(); // Defining server
 var router = require('../utils/router.js'); // Request handling-routing
@@ -32,7 +31,6 @@ server.listen(PORT, function(){
 
 app.get('/',function(req, res){
   console.log('get request made')
->>>>>>> 18b21b8f8ccb31bfd8ff275649119f5c2af371d2
   var req = req;
   var res = res;
   router.requestHandler('/', req, res)
