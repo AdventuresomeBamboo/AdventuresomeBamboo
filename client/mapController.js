@@ -6,7 +6,7 @@ angular.module('map', [])
   .controller('mapController', function($scope){
     // Setting our $scope statename that will change on click
     // Will pass in later to get data from state selection DB
-    $scope.stateName = "test";
+    
     $scope.init = function(){
       $('#vmap').vectorMap({ map: 'usa_en',
     backgroundColor: '#1640BC',
