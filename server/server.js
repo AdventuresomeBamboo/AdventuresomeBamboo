@@ -14,6 +14,25 @@ http.createServer(app).listen(openPort, function(){
 https.createServer(app).listen(lockPort) // <-- initialize server for https
 
 app.get('*',function(req, res){
+=======
+var http = require('http'); // Require/import the HTTP module
+var app = require('express')(); // Defining server
+var router = require('../utils/router.js'); // Request handling-routing
+
+const PORT=6789; // Port we want to listen to
+var server = http.createServer(); //Create a server
+
+//Lets start our server
+server.listen(PORT, function(){
+    //Callback triggered when server is successfully listening.
+    console.log("Server listening on: http://localhost:%s", PORT);
+  })
+/*********************** Routing ****************************/
+//Handled by router.js
+
+app.get('/',function(req, res){
+  console.log('get request made')
+>>>>>>> 18b21b8f8ccb31bfd8ff275649119f5c2af371d2
   var req = req;
   var res = res;
   router.requestHandler('/', req, res)
@@ -35,4 +54,5 @@ app.post('/crop',function(req, res, next){
   var req = req;
   var res = res;
   router.requestHandler('/crop', req, res)
+
 });
