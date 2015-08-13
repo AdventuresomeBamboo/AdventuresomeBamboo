@@ -6,7 +6,7 @@ angular.module('map', [])
   .controller('mapController', function($scope){
     // Setting our $scope statename that will change on click
     // Will pass in later to get data from state selection DB
-    $scope.stateName;
+    $scope.stateName = "test";
     $scope.init = function(){
       $('#vmap').vectorMap({ map: 'usa_en',
     backgroundColor: '#1640BC',
@@ -25,6 +25,7 @@ angular.module('map', [])
     { 
       $scope.stateName = region;
       // Need to fix line 26, data binding not displaying right?
+      console.log("scope : ", $scope);
       console.log("stateName in scope : ", $scope.stateName);
       // Console logging right, but not showing up on html as supposed to
       // Look at lines 17-22 in index.html ???
