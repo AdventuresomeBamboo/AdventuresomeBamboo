@@ -2,7 +2,7 @@ var express = require('express')
 var app = require('express')(); // Defining server
 var http = require('http');
 var https = require('https');
-var router = require('../utils/router.js'); // Request handling-routing
+var router = require('../utilities/router.js'); // Request handling-routing
 
 /*********************** Routing ****************************/
 //Handled by app.js
