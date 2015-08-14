@@ -12,7 +12,7 @@ http.createServer(app).listen(openPort, function(){
   console.log('Server listening on port',openPort)
 }); // <-- initialize server for http
 https.createServer(app).listen(lockPort) // <-- initialize server for https
-
+app.use("/client", express.static(__dirname + '/client'));
 /*********************** Routing ****************************/
 //Handled by router.js
 
