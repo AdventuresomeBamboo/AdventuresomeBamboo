@@ -2,7 +2,7 @@ var express = require('express')
 var app = require('express')(); // Defining server
 var http = require('http');
 var https = require('https');
-var router = require('../utils/router.js'); // Request handling-routing
+var router = require('../utilities/router.js'); // Request handling-routing
 
 /*********************** Routing ****************************/
 //Handled by app.js
@@ -14,7 +14,7 @@ http.createServer(app).listen(openPort, function(){
 https.createServer(app).listen(lockPort) // <-- initialize server for https
 
 /*********************** Routing ****************************/
-//Handled by router.js
+//Handled by router.js\\
 
 app.get('/',function(req, res){
   router.requestHandler('/', req, res);
