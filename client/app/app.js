@@ -1,10 +1,10 @@
 angular.module('app', [
   'app.services',
+  'datamaps',
+  'ngRoute',
   'app.cropTypeSelect',
   'app.cropSelect',
-  'app.map',
-  'datamaps',
-  'ngRoute'
+  'app.map'
 ])
 
 .config(function($routeProvider, $httpProvider) {

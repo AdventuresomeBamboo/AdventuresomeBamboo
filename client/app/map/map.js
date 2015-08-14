@@ -1,24 +1,23 @@
 angular.module('app.map', ['datamaps'])
 
-.controller('mapController', function ($scope, Factory) {
+.controller('mapController', function ($scope) {
   $scope.title = "map"
-
+  
   $scope.map = {
-  type: 'usa',
-  data: [{
-    values: [
-      { "location": "USA", "value": 125 },
-      { "location": "CAN", "value": 50 },
-      { "location": "FRA", "value": 70 },
-      { "location": "RUS", "value": 312 }
-    ]
-  }],
-  colors: ['#666666', '#b9b9b9', '#fafafa'],
-  options: {
-    width: 1110,
-    legendHeight: 60 // optionally set the padding for the legend
-  }
-}
+  	scope: 'usa',
+  	responsive: true,
+  	options: {
+  		staticGeoData: true
+  	}
+   }
+
+   $scope.updateActiveGeography = function(geography) {
+		$scope.stateName = geography.properties.name;
+ 	 	console.log($scope.stateName);
+  		$scope.stateCode = geography.id;
+	}
+
+
 
 });
 
