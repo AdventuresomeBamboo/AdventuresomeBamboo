@@ -7,6 +7,7 @@ Dynamic data visualation for agriculture production by state
 Providing a user friendly experience to access agricultural data provided by the Department of Agriculture. 
 
 ## Summary ##
+
 We created an easy way for users to be able to view data provided by the USDA about agriculture production. Instead of requiring the user to filter through charts or plain text data to access this information as it is provided by the USDA, we created a smooth and intuitive user interface that gives the user that same data in clean and dynamic graphs.
 
 ## Problem ##
