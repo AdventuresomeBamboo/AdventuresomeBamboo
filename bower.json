@@ -1,0 +1,24 @@
+{
+  "name": "AdventuresomeBamboo",
+  "version": "0.0.0",
+  "homepage": "github.com/adventuresomeBamboo",
+  "authors": [
+    "adv bamboo"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular": "~1.4.4",
+    "datamaps": "~0.4.0",
+    "angular-datamaps": "~0.1.2",
+    "bootstrap": "~3.3.5",
+    "angular-route": "~1.4.4"
+  }
+}
