@@ -14,7 +14,7 @@ http.createServer(app).listen(openPort, function(){
 https.createServer(app).listen(lockPort) // <-- initialize server for https
 
 /*********************** Routing ****************************/
-//Handled by router.js
+//Handled by router.js\\
 
 app.get('/',function(req, res){
   router.requestHandler('/', req, res);
