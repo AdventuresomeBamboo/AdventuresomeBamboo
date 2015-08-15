@@ -18,13 +18,14 @@
     <!-- adding our controller that will add the map -->
     <div ng-app="map" ng-controller="mapController">
       <!-- should be displaying stateName on click -->
-      <h1> {{ stateName }} </h1>
     <div id="stateInfo">
       <!-- should be displaying stateName on click here too -->
         <span ng-bind="stateName" ng-model="stateName"> {{ stateName }} </span>
         <!-- ng repeat crop in crop types below? should display crop type options for each state -->
-        <div id="cropInfo" ng-controller="cropTypeController">
-        </div>
+
+    </div>
+    <div>
+      <a ng-repeat="typ in types"> {{ typ }} </a>
     </div>
   </div>
   </body>

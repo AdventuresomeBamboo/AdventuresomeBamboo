@@ -6,6 +6,7 @@ angular.module('map', [])
   .controller('mapController', function($scope){
     // Setting our $scope statename that will change on click
     // Will pass in later to get data from state selection DB
+    $scope.types = [];
     
     $scope.init = function(){
       $('#vmap').vectorMap({ map: 'usa_en',
@@ -44,7 +45,8 @@ angular.module('map', [])
         }
       })
       .done(function(data){
-        console.log('This is the data ', JSON.parse(data)[1])
+        $scope.types = JSON.parse(data);
+        console.log($scope.types)
       })
     }
   });
