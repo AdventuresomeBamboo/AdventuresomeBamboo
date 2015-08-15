@@ -63,7 +63,7 @@ var getCropTypes = function (state, req, res){
       if(err){console.log('Following error ocurred : ',err); return};
       console.log('Finished getting crop types : ',types );
       res.writeHead(200);
-      res.write(types);
+      res.write(JSON.stringify(types));
       res.end();
     });
 };
@@ -98,7 +98,7 @@ var showCropInfo = function (state, cropType, crop, year, req, res){
   async([//<-- handling of asynchronous calls
     function(done){
       request.get(link, function (err, response, body){// <-- initiates connection to API server
-        production[year] = JSON.parse(body)
+        production[year] = JSON.parse(body).data[0].value;
         console.log(production);
       });
       done(false);
@@ -121,5 +121,3 @@ var showCropInfo = function (state, cropType, crop, year, req, res){
       res.end();
     });
 };
-
-getCropNames('CALIFORNIA', 'VEGETABLES');

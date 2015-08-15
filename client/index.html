@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="styling.css" />
     <link rel="stylesheet" type="text/css" href="/jqvmap-stable/jqvmap/jqvmap.css" media="screen" />
   </head>
-  <body>
+  <body ng-app="map">
     <h1 align="center">Title Goes Here</h1>
     <!-- Setting up where our map is going to go -->
     <div id="vmap" style="width: 600px; height: 400px;"></div>
@@ -23,9 +23,7 @@
       <!-- should be displaying stateName on click here too -->
         <span ng-bind="stateName" ng-model="stateName"> {{ stateName }} </span>
         <!-- ng repeat crop in crop types below? should display crop type options for each state -->
-        <div id="cropInfo" ng-controller="cropTypeController">
-        </div>
+      </div>
     </div>
-  </div>
   </body>
 </html>
