@@ -6,6 +6,7 @@ var map = angular.module('map', [])
   .controller('mapController', function($scope){
     // Setting our $scope statename that will change on click
     // Will pass in later to get data from state selection DB
+<<<<<<< HEAD
     $scope.init = function(){
       $('#vmap').vectorMap({ map: 'usa_en',
     backgroundColor: '#1640BC',
@@ -28,9 +29,7 @@ var map = angular.module('map', [])
       console.log("stateName in scope : ", $scope.stateName);
       // Console logging right, but not showing up on html as supposed to
       // Look at lines 17-22 in index.html ???
-
       // commented out ajax for now
-
       $.ajax({
         url:'http://localhost:5678/state?'+region,
         type: 'post',
@@ -38,10 +37,13 @@ var map = angular.module('map', [])
           console.log('Success')
         }
       })
+      .done(function(data){
+        $scope.types = JSON.parse(data);
+      })
     }
   });
-    };
-    $scope.init();
+};
+$scope.init();
     // puts our map on the page,
     });
 
