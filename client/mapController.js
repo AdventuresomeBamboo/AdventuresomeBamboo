@@ -9,21 +9,21 @@ angular.module('map', [])
     
     $scope.init = function(){
       $('#vmap').vectorMap({ map: 'usa_en',
-    backgroundColor: '#1640BC',
-    borderColor: '#818181',
-    borderOpacity: 0.25,
-    borderWidth: 1,
-    color: '#f4f3f0',
-    enableZoom: true,
-    hoverColor: '#8AA0DE',
-    hoverOpacity: null,
-    normalizeFunction: 'linear',
-    scaleColors: ['#b6d6ff', '#005ace'],
-    selectedColor: '#c9dfaf',
-    selectedRegion: null, 
-    onRegionClick: function(element, code, region)
-    { 
-      $scope.stateName = region;
+        backgroundColor: '#1640BC',
+        borderColor: '#818181',
+        borderOpacity: 0.25,
+        borderWidth: 1,
+        color: '#f4f3f0',
+        enableZoom: true,
+        hoverColor: '#8AA0DE',
+        hoverOpacity: null,
+        normalizeFunction: 'linear',
+        scaleColors: ['#b6d6ff', '#005ace'],
+        selectedColor: '#c9dfaf',
+        selectedRegion: null, 
+        onRegionClick: function(element, code, region)
+        { 
+          $scope.stateName = region;
       // Need to fix line 26, data binding not displaying right?
       console.log("scope : ", $scope);
       console.log("stateName in scope : ", $scope.stateName);
@@ -32,25 +32,28 @@ angular.module('map', [])
 
       // commented out ajax for now
 
-      // $.ajax({
-      //   url:'http://localhost:5678/state?'+region,
-      //   type: 'post',
-      //   data: {
-      //     'state' : region
-      //   },
-      //   dataType: 'text',
-      //   success: function (data){
-      //     console.log('Success')
-      //   }
-      // })
+      $.ajax({
+        url:'http://localhost:5678/state?'+region,
+        type: 'post',
+        data: {
+          'state' : region
+        },
+        dataType: 'text',
+        success: function (data){
+          console.log('Success')
+        }
+      })
+      .done(function(data){
+        console.log('This is the data ', JSON.parse(data)[1])
+      })
     }
   });
-    };
-    $scope.init();
+};
+$scope.init();
     // puts our map on the page,
-    })
+  })
 
-    .controller('cropTypeController', function($scope){
+.controller('cropTypeController', function($scope){
       //this is where we pass in our $scope.stateName
 
       //display the following each in its own unordered list
@@ -61,4 +64,4 @@ angular.module('map', [])
 
 
 
-    })
+      })
