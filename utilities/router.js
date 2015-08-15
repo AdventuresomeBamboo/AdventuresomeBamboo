@@ -18,7 +18,8 @@ module.exports.requestHandler = function (route, req, res){
   }
   else if(route === '/state'){
   //Post request for the crop types name
-    state = (url.parse(req.url).query).toUpperCase();
+    state = (url.parse(req.url).query).toUpperCase()
+    .replace();
     getCropTypes(state, req, res);
   }
   else if(route === '/cropType'){

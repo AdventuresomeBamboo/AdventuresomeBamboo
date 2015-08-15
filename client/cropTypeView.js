@@ -1,13 +1,7 @@
-onRegionClick: function(element, code, cropType)
+onCropTypeClick: function(element, code, cropType)
     { 
       $('#stateInfo #stateName').text(cropType);
-      $.ajax({
-        url:'http://localhost:5678/state?'+cropType,
-        type: 'post',
-        success: function (data){
-          console.log('Success')
-        }
-      })
+      $http.post('/cropType?'+cropType)
     }
 
 /* FORMAT CROP TYPES AS FOLLOWS

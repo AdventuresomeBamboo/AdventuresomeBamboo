@@ -27,19 +27,10 @@ angular.module('map', [])
       // Console logging right, but not showing up on html as supposed to
       // Look at lines 17-22 in index.html ???
       // commented out ajax for now
-          // $.ajax({
-          //   url:'http://localhost:5678/state?'+region,
-          //   type: 'post',
-          //   success: function (data){
-          //     console.log('Success')
-          //   }
-          // })
-          // .done(function(data){
-          //   $scope.types = JSON.parse(data);
-          // })
           $http.post('/state?'+region, region)
           .then(function(response){
             console.log(response.data)
+            $scope.types = response.data
           })
         }
       });
@@ -48,7 +39,7 @@ angular.module('map', [])
     // puts our map on the page,
   })
   .service('mapServe', function(){
-
+    
   })
     // map.service('mapService', function(){
 
