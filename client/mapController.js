@@ -3,13 +3,9 @@
 
 angular.module('map', [])
   // Defining our map controller
-  .controller('mapController', function($scope){
+  .controller('mapController', function($scope, $http){
     // Setting our $scope statename that will change on click
     // Will pass in later to get data from state selection DB
-    $scope.types;
-    $scope.flag = false;
-
-    
     $scope.init = function(){
       $('#vmap').vectorMap({ map: 'usa_en',
         backgroundColor: '#1640BC',
@@ -27,41 +23,33 @@ angular.module('map', [])
         onRegionClick: function(element, code, region)
         { 
           $scope.stateName = region;
-      // Need to fix line 26, data binding not displaying right?
-      console.log("scope : ", $scope);
-      console.log("stateName in scope : ", $scope.stateName);
+      // Need to fix line above this one, data binding not displaying right?
       // Console logging right, but not showing up on html as supposed to
       // Look at lines 17-22 in index.html ???
-
       // commented out ajax for now
-
-      $.ajax({
-        url:'http://localhost:5678/state?'+region,
-        type: 'post',
-        data: {
-          'state' : region
-        },
-        dataType: 'text',
-        success: function (data){
-          console.log('Success')
+          // $.ajax({
+          //   url:'http://localhost:5678/state?'+region,
+          //   type: 'post',
+          //   success: function (data){
+          //     console.log('Success')
+          //   }
+          // })
+          // .done(function(data){
+          //   $scope.types = JSON.parse(data);
+          // })
+          $http.post('/state?'+region, region)
+          .then(function(response){
+            console.log(response.data)
+          })
         }
-      })
-      .done(function(data){
-        $scope.types = JSON.parse(data);
-      })
-    }
-  });
-};
-$scope.init();
+      });
+    };
+    $scope.init();
     // puts our map on the page,
   })
+  .service('mapServe', function(){
 
-.controller('cropTypeController', function($scope){
-      //this is where we pass in our $scope.stateName
+  })
+    // map.service('mapService', function(){
 
-      //display the following each in its own unordered list
-        //cropSelections[FRUIT%20%26%20TREE%20NUTS][$scope.stateName]
-        //cropSelections[FIELD%20CROPS][$scope.stateName]
-        //cropSelections[HORTICULTURE][$scope.stateName]
-        //cropSelections[VEGETABLES][$scope.stateName]
-})
+    // })

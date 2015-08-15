@@ -68,6 +68,8 @@ var getCropTypes = function (state, req, res){
     });
 };
 
+
+
 var getCropNames = function (state, req, res){
   var crops = [];; // <-- holder for the crop names that will be passed in
   async([ //<-- handling of asynchronous calls
@@ -99,7 +101,7 @@ var showCropInfo = function (state, cropType, crop, year, req, res){
   async([//<-- handling of asynchronous calls
     function(done){
       request.get(link, function (err, response, body){// <-- initiates connection to API server
-        production[year] = JSON.parse(body).data[0].value
+        production[year] = JSON.parse(body).data[0].value;
         console.log(production);
       });
       done(false);
