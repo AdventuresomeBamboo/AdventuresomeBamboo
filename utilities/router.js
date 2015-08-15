@@ -101,11 +101,7 @@ var showCropInfo = function (state, cropType, crop, year, req, res){
   async([//<-- handling of asynchronous calls
     function(done){
       request.get(link, function (err, response, body){// <-- initiates connection to API server
-<<<<<<< HEAD
         production[year] = JSON.parse(body).data[0].value;
-=======
-        production[year] = JSON.parse(body).data[0].value
->>>>>>> c9e20f8249d7ccffe205e473d39a550bbaa6e4d4
         console.log(production);
       });
       done(false);
@@ -127,8 +123,4 @@ var showCropInfo = function (state, cropType, crop, year, req, res){
       res.write(JSON.stringify(production));
       res.end();
     });
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> c9e20f8249d7ccffe205e473d39a550bbaa6e4d4
