@@ -24,9 +24,10 @@
         <!-- ng repeat crop in crop types below? should display crop type options for each state -->
 
     </div>
-    <div>
-      <a ng-repeat="typ in types"> {{ typ }} </a>
+    <div ng-switch= "flag"> 
+     <p ng-repeat="typ in types">{{ typ }}</p>
     </div>
+
   </div>
   </body>
 </html>
