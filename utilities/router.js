@@ -63,7 +63,7 @@ var getCropTypes = function (state, req, res){
       if(err){console.log('Following error ocurred : ',err); return};
       console.log('Finished getting crop types : ',types );
       res.writeHead(200);
-      res.write(types);
+      res.write(JSON.stringify(types));
       res.end();
     });
 };
@@ -85,7 +85,7 @@ var getCropNames = function (state, req, res){
       if(err){console.log('Following error ocurred : ',err); return};
       console.log('Finished getting crop names : ',crops)
       res.writeHead(200);
-      res.write(crops);
+      res.write(JSON.stringify(crops));
       res.end();
     });
 };
@@ -93,12 +93,13 @@ var getCropNames = function (state, req, res){
 var showCropInfo = function (state, cropType, crop, year, req, res){
   var production = {}; // <-- holder for the production values that will be passed in
   var data = ''; // <-- data hold for parsing
-  link = 'http://nass-api.azurewebsites.net/api/api_get?source_desc=SURVEY&sector_desc=CROPS&group_desc='+cropType+'&agg_level_desc=STATE&year='+year+'&state_name='+state+'&commodity_desc='+crop;
+  link = 'http://nass-api.azurewebsites.net/api/api_get?source_desc=SURVEY&sector_desc=CROPS&group_desc='+cropType+'&agg_level_desc=STATE&year='+year+'&state_name='+state+'&commodity_desc='+crop+'&statisticcat_desc=PRODUCTION';
+  
   // ^-- Above is the link for the API request check the vars in the string...
   async([//<-- handling of asynchronous calls
     function(done){
       request.get(link, function (err, response, body){// <-- initiates connection to API server
-        production[year] = JSON.parse(body)
+        production[year] = JSON.parse(body).data[0].value
         console.log(production);
       });
       done(false);
@@ -117,9 +118,7 @@ var showCropInfo = function (state, cropType, crop, year, req, res){
       if(err){console.log('Following error ocurred : ',err); return};
       console.log('Finished getting crop names!')
       res.writeHead(200);
-      res.write(production);
+      res.write(JSON.stringify(production));
       res.end();
     });
 };
-
-getCropNames('CALIFORNIA', 'VEGETABLES');
