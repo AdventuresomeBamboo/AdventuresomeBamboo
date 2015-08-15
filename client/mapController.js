@@ -20,8 +20,8 @@ angular.module('map', [])
         scaleColors: ['#b6d6ff', '#005ace'],
         selectedColor: '#c9dfaf',
         selectedRegion: null, 
-        onRegionClick: function(element, code, region)
-        { 
+        onRegionClick: function(element, code, region){ 
+
           $scope.stateName = region;
       // Need to fix line above this one, data binding not displaying right?
       // Console logging right, but not showing up on html as supposed to
@@ -38,9 +38,7 @@ angular.module('map', [])
     $scope.init();
     // puts our map on the page,
   })
+
   .service('mapServe', function(){
     
   })
-    // map.service('mapService', function(){
-
-    // })
