@@ -68,6 +68,8 @@ var getCropTypes = function (state, req, res){
     });
 };
 
+
+
 var getCropNames = function (state, req, res){
   var crops = [];; // <-- holder for the crop names that will be passed in
   async([ //<-- handling of asynchronous calls
