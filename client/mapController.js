@@ -24,11 +24,11 @@ angular.module('map', [])
         onRegionClick: function(element, code, region){ 
 
           $scope.stateName = region;
-          $scope.cropTypes;
-
+          $scope.cropInfo = [];
+          $scope.crops = [];
           $http.post('/state?'+region, region)
           .then(function(response){
-            $scope.cropTypes = response.data;
+            $scope.types = response.data
           })
         }
       });
@@ -45,19 +45,14 @@ angular.module('map', [])
     $scope.getCropDetails = function(){
        $http.post('/crop?'+this.crop)
        .then(function(response){
-        $scope.details = response.data;
-        
-        $scope.details.forEach(function(dets){
+        $scope.cropInfo = [];
+        $scope.details = response.data.forEach(function(dets){
           if(dets.unit_desc === 'CWT'){
-            //send the following to graph
-            
+            var year = dets.year;
+            var val = dets.value;
+            $scope.cropInfo.push([year, val])
           }
         })
        })
     }
-
-  })
-
-  .service('mapServe', function(){
-
   })
