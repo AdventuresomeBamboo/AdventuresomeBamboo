@@ -10,17 +10,17 @@ app.controller('mapController', function($scope, $http){
 
     $scope.init = function(){
       $('#vmap').vectorMap({ map: 'usa_en',
-        backgroundColor: '#1640BC',
+        backgroundColor: 'white',
         borderColor: '#818181',
         borderOpacity: 0.25,
         borderWidth: 1,
-        color: '#f4f3f0',
-        enableZoom: true,
-        hoverColor: '#8AA0DE',
+        color: '#18bc9c',
+        enableZoom: false,
+        hoverColor: '#2c3e50',
         hoverOpacity: null,
         normalizeFunction: 'linear',
         scaleColors: ['#b6d6ff', '#005ace'],
-        selectedColor: '#c9dfaf',
+        selectedColor: '#2c3e50',
         selectedRegion: null, 
         onRegionClick: function(element, code, region){ 
 
