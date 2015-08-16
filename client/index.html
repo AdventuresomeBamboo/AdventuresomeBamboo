@@ -23,7 +23,19 @@
         <span ng-bind="stateName" ng-model="stateName"> {{ stateName }} </span>
         <!-- ng repeat crop in crop types below? should display crop type options for each state -->
     </div>
-     <p ng-repeat="type in cropTypes">{{ type }}</p>
+    
+    <div ng-repeat="type in cropTypes">
+     <a href='#' ng-click="getCrops()">
+     {{ type }}</a>
+    </div>
+
+     <div ng-repeat="crop in crops">
+     <a href='#' ng-click="getCropDetails()">
+     {{ crop }}</a>
+    </div>
+
+
+
     </div>
 
   </div>
