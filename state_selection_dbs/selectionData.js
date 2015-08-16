@@ -958,7 +958,7 @@ module.exports.selectionData = {
     'FIELD CROP TOTALS',
     'CORN' ],
     ALASKA: [ 'HAY', 'BARLEY', 'OATS' ] },
-    'HORTICULTURE':{},
+    'HORTICULTURE':{ /*INTENTIONALLY LEFT BLANK*/},
     'VEGETABLES':{ COLORADO: 
      [ 'POTATOES',
      'MELONS',
