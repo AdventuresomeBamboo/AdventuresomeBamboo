@@ -1,6 +1,6 @@
 module.exports.selectionData = {
   'FRUIT%20%26%20TREE%20NUTS': { 
-    'NORTH CAROLINA':  [ 
+    'NORTH%20CAROLINA':  [ 
     'APPLES',
     'PEACHES',
     'STRAWBERRIES',
@@ -26,7 +26,7 @@ module.exports.selectionData = {
     'APPLES',
     'FRUIT & TREE NUT TOTALS',
     'NON-CITRUS FRUIT & TREE NUTS TOTALS' ],
-    'NEW HAMPSHIRE': 
+    'NEW%20HAMPSHIRE': 
     [ 'PEACHES',
     'APPLES',
     'PEARS',
@@ -34,7 +34,7 @@ module.exports.selectionData = {
     'BLUEBERRIES',
     'FRUIT & TREE NUT TOTALS',
     'NON-CITRUS FRUIT & TREE NUTS TOTALS' ],
-    'NEW YORK': 
+    'NEW%20YORK': 
     [ 'PEARS',
     'APPLES',
     'GRAPES',
@@ -60,7 +60,7 @@ module.exports.selectionData = {
     'APPLES',
     'FRUIT & TREE NUT TOTALS',
     'NON-CITRUS FRUIT & TREE NUTS TOTALS' ],
-    'NEW JERSEY': 
+    'NEW%20JERSEY': 
     [ 'APPLES',
     'PEACHES',
     'FRUIT & TREE NUT TOTALS',
@@ -69,7 +69,7 @@ module.exports.selectionData = {
     'BLUEBERRIES',
     'GRAPES',
     'NON-CITRUS FRUIT & TREE NUTS TOTALS' ],
-    'WEST VIRGINIA': 
+    'WEST%20VIRGINIA': 
     [ 'PEACHES',
     'APPLES',
     'FRUIT & TREE NUT TOTALS',
@@ -80,7 +80,7 @@ module.exports.selectionData = {
     'STRAWBERRIES',
     'FRUIT & TREE NUT TOTALS',
     'NON-CITRUS FRUIT & TREE NUTS TOTALS' ],
-    'RHODE ISLAND': 
+    'RHODE%20ISLAND': 
     [ 'APPLES',
     'PEACHES',
     'STRAWBERRIES',
@@ -96,7 +96,7 @@ module.exports.selectionData = {
     'ORANGES',
     'APPLES',
     'NON-CITRUS FRUIT & TREE NUTS TOTALS' ],
-    'SOUTH CAROLINA': 
+    'SOUTH%20CAROLINA': 
     [ 'PEACHES',
     'PECANS',
     'FRUIT & TREE NUT TOTALS',
@@ -218,7 +218,7 @@ module.exports.selectionData = {
     'PEARS',
     'APPLES',
     'FRUIT & TREE NUT TOTALS' ],
-    'NEW MEXICO': 
+    'NEW%20MEXICO': 
     [ 'PECANS',
     'FRUIT & TREE NUT TOTALS',
     'APPLES',
@@ -282,7 +282,7 @@ module.exports.selectionData = {
     'APPLES',
     'PEACHES',
     'NON-CITRUS FRUIT & TREE NUTS TOTALS' ],
-    'NORTH DAKOTA': [ 'FRUIT & TREE NUT TOTALS' ],
+    'NORTH%20DAKOTA': [ 'FRUIT & TREE NUT TOTALS' ],
     MONTANA: 
     [ 'FRUIT & TREE NUT TOTALS',
     'CHERRIES',
@@ -378,10 +378,10 @@ module.exports.selectionData = {
     'NON-CITRUS FRUIT & TREE NUTS TOTALS' ],
     WYOMING: [ 'FRUIT & TREE NUT TOTALS', 'APPLES' ],
     NEBRASKA: [ 'FRUIT & TREE NUT TOTALS', 'APPLES' ],
-    'SOUTH DAKOTA': [ 'FRUIT & TREE NUT TOTALS', 'APPLES' ],
+    'SOUTH%20DAKOTA': [ 'FRUIT & TREE NUT TOTALS', 'APPLES' ],
     NEVADA: [ 'FRUIT & TREE NUT TOTALS', 'APPLES' ] 
   },
-    'FIELD%20CROPS':{ 'SOUTH CAROLINA': 
+    'FIELD%20CROPS':{ 'SOUTH%20CAROLINA': 
     [ 'TOBACCO',
     'COTTON',
     'WHEAT',
@@ -480,7 +480,7 @@ module.exports.selectionData = {
     'PEANUTS',
     'RICE',
     'PEAS' ],
-    'NORTH DAKOTA': 
+    'NORTH%20DAKOTA': 
     [ 'BEANS',
     'SOYBEANS',
     'LENTILS',
@@ -509,7 +509,7 @@ module.exports.selectionData = {
     'CORN',
     'HAY',
     'HAY & HAYLAGE' ],
-    'SOUTH DAKOTA': 
+    'SOUTH%20DAKOTA': 
     [ 'BEANS',
     'HAYLAGE',
     'CORN',
@@ -642,7 +642,7 @@ module.exports.selectionData = {
     'HAY',
     'SOYBEANS',
     'FIELD CROP TOTALS' ],
-    'NEW MEXICO': 
+    'NEW%20MEXICO': 
     [ 'BEANS',
     'HAY',
     'COTTON',
@@ -712,7 +712,7 @@ module.exports.selectionData = {
     'SUGARBEETS',
     'FIELD CROP TOTALS',
     'HAYLAGE' ],
-    'NEW JERSEY': 
+    'NEW%20JERSEY': 
     [ 'CORN',
     'FIELD CROP TOTALS',
     'SOYBEANS',
@@ -733,7 +733,7 @@ module.exports.selectionData = {
     'BARLEY',
     'HAY & HAYLAGE',
     'FIELD CROP TOTALS' ],
-    'NORTH CAROLINA': 
+    'NORTH%20CAROLINA': 
     [ 'PEANUTS',
     'COTTON',
     'TOBACCO',
@@ -807,7 +807,7 @@ module.exports.selectionData = {
     'FLAXSEED',
     'HAYLAGE',
     'FIELD CROP TOTALS' ],
-    'WEST VIRGINIA': 
+    'WEST%20VIRGINIA': 
     [ 'TOBACCO',
     'WHEAT',
     'HAY',
@@ -905,8 +905,8 @@ module.exports.selectionData = {
     'SOYBEANS',
     'FIELD CROP TOTALS',
     'HAY & HAYLAGE' ],
-    'RHODE ISLAND': [ 'HAY', 'CORN', 'FIELD CROP TOTALS', 'HAY & HAYLAGE' ],
-    'NEW YORK': 
+    'RHODE%20ISLAND': [ 'HAY', 'CORN', 'FIELD CROP TOTALS', 'HAY & HAYLAGE' ],
+    'NEW%20YORK': 
     [ 'CORN',
     'OATS',
     'FIELD CROP TOTALS',
@@ -943,7 +943,7 @@ module.exports.selectionData = {
     'TOBACCO',
     'MAPLE SYRUP',
     'FIELD CROP TOTALS' ],
-    'NEW HAMPSHIRE': 
+    'NEW%20HAMPSHIRE': 
     [ 'HAY',
     'HAY & HAYLAGE',
     'MAPLE SYRUP',
@@ -1021,7 +1021,7 @@ module.exports.selectionData = {
      'TOMATOES',
      'VEGETABLE TOTALS' ],
      MONTANA: [ 'POTATOES' ],
-     'NORTH DAKOTA': [ 'POTATOES' ],
+     'NORTH%20DAKOTA': [ 'POTATOES' ],
      MICHIGAN: 
      [ 'POTATOES',
      'ONIONS',
@@ -1066,7 +1066,7 @@ module.exports.selectionData = {
      'TOMATOES',
      'VEGETABLE TOTALS' ],
      MISSISSIPPI: [ 'POTATOES', 'SWEET POTATOES', 'MELONS', 'VEGETABLE TOTALS' ],
-     'SOUTH CAROLINA': 
+     'SOUTH%20CAROLINA': 
      [ 'POTATOES',
      'SWEET POTATOES',
      'MELONS',
@@ -1112,15 +1112,15 @@ module.exports.selectionData = {
      'ASPARAGUS',
      'VEGETABLE TOTALS',
      'PUMPKINS' ],
-     'WEST VIRGINIA': [ 'POTATOES', 'SWEET POTATOES' ],
-     'NEW MEXICO': 
+     'WEST%20VIRGINIA': [ 'POTATOES', 'SWEET POTATOES' ],
+     'NEW%20MEXICO': 
      [ 'POTATOES',
      'SWEET POTATOES',
      'ONIONS',
      'PEPPERS',
      'LETTUCE',
      'VEGETABLE TOTALS' ],
-     'SOUTH DAKOTA': [ 'POTATOES' ],
+     'SOUTH%20DAKOTA': [ 'POTATOES' ],
      MARYLAND: 
      [ 'POTATOES',
      'SWEET POTATOES',
@@ -1132,7 +1132,7 @@ module.exports.selectionData = {
      'VEGETABLE TOTALS',
      'SPINACH',
      'TOMATOES' ],
-     'NEW JERSEY': 
+     'NEW%20JERSEY': 
      [ 'POTATOES',
      'SWEET POTATOES',
      'PEPPERS',
@@ -1211,8 +1211,8 @@ module.exports.selectionData = {
      'CARROTS',
      'TOMATOES',
      'BROCCOLI' ],
-     'RHODE ISLAND': [ 'POTATOES', 'SWEET CORN', 'VEGETABLE TOTALS' ],
-     'NEW YORK': 
+     'RHODE%20ISLAND': [ 'POTATOES', 'SWEET CORN', 'VEGETABLE TOTALS' ],
+     'NEW%20YORK': 
      [ 'POTATOES',
      'ONIONS',
      'CAULIFLOWER',
@@ -1233,7 +1233,7 @@ module.exports.selectionData = {
      'PEPPERS',
      'TOMATOES' ],
      VERMONT: [ 'POTATOES', 'SWEET CORN', 'VEGETABLE TOTALS' ],
-     'NORTH CAROLINA': 
+     'NORTH%20CAROLINA': 
      [ 'POTATOES',
      'SWEET POTATOES',
      'PEPPERS',
@@ -1322,7 +1322,7 @@ module.exports.selectionData = {
      'VEGETABLE TOTALS',
      'PEPPERS',
      'TOMATOES' ],
-     'NEW HAMPSHIRE': [ 'POTATOES', 'SWEET CORN', 'VEGETABLE TOTALS' ],
+     'NEW%20HAMPSHIRE': [ 'POTATOES', 'SWEET CORN', 'VEGETABLE TOTALS' ],
      KENTUCKY: [ 'POTATOES', 'SWEET POTATOES' ],
      ALASKA: [ 'POTATOES' ],
      HAWAII: 
