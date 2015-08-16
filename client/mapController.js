@@ -52,16 +52,17 @@ app.controller('mapController', function($scope, $http){
           $scope.cropInfo = ['NO DATA TO DISPLAY'];
         }else{
           $scope.details = response.data.forEach(function(dets){
-            if(dets.unit_desc === 'CWT' && dets.class_desc !== 'ALL CLASSES'){
+            if(dets.unit_desc === 'CWT' && dets.class_desc !== 'ALL CLASSES' && dets.util_practice_desc === "ALL UTILIZATION PRACTICES"){
               var year = dets.year;
               var val = dets.value;
               var desc = dets.class_desc;
               $scope.cropInfo.push(['Year : ',year ,'Type : ', desc, 'CWT : ', val]);
             }
-            if(dets.class_desc === 'ALL CLASSES'){
+            if(dets.unit_desc === 'CWT' && dets.class_desc === 'ALL CLASSES' && dets.util_practice_desc === "ALL UTILIZATION PRACTICES"){
+              console.log(dets)
               var year = dets.year;
               var val = dets.value;
-              compareThisArray.push(['Year : ',year , 'CWT : ', val]);
+              compareThisArray.push(['Year : ',year , ' CWT : ', val]);
             }
           })
           if(compareThisArray.length > $scope.cropInfo.length){
