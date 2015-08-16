@@ -72,7 +72,7 @@ var getCropTypes = function (state, req, res){
 
 
 
-var getCropNames = function (state, req, res){
+var getCropNames = function (state, cropType, req, res){
   var crops = [];; // <-- holder for the crop names that will be passed in
   async([ //<-- handling of asynchronous calls
     function(done){
@@ -96,33 +96,37 @@ var getCropNames = function (state, req, res){
 
 var showCropInfo = function (state, cropType, crop, year, req, res){
   var production = {}; // <-- holder for the production values that will be passed in
-  var data = ''; // <-- data hold for parsing
-  link = 'http://nass-api.azurewebsites.net/api/api_get?source_desc=SURVEY&sector_desc=CROPS&group_desc='+cropType+'&agg_level_desc=STATE&year='+year+'&state_name='+state+'&commodity_desc='+crop+'&statisticcat_desc=PRODUCTION';
-  
   // ^-- Above is the link for the API request check the vars in the string...
+  link = 'http://nass-api.azurewebsites.net/api/api_get?source_desc=SURVEY&sector_desc=CROPS&group_desc='+cropType+'&agg_level_desc=STATE&year__or=2014&year__or=2013&year__or=2011&year__or=2010&year__or=2012&state_name='+state+'&commodity_desc='+crop+'&statisticcat_desc=PRODUCTION';
   async([//<-- handling of asynchronous calls
     function(done){
       request.get(link, function (err, response, body){// <-- initiates connection to API server
-        production[year] = JSON.parse(body).data[0].value;
+        production = JSON.parse(body).data;
         console.log(production);
       });
       done(false);
     },
     function(done){
       console.log('getting crop info for '+year+'...')
-      done(false);
+      done();
     },
     function(done){
-      if(year > 2009){
-        showCropInfo(state, cropType, crop, year-1, req, res);
-      }
-      done(false)
+      setTimeout(done, 2000);
     }],
     function(err){
       if(err){console.log('Following error ocurred : ',err); return};
       console.log('Finished getting crop names!')
-      res.writeHead(200);
-      res.write(JSON.stringify(production));
+        res.writeHead(200);
+      if(production){
+        console.log("this is production", production.data)
+        res.write(JSON.stringify(production));
+      }else{
+        res.write('No Data to Display') 
+      }
       res.end();
     });
 };
+
+var getCropInfo = function (year){
+  link = 'http://nass-api.azurewebsites.net/api/api_get?source_desc=SURVEY&sector_desc=CROPS&group_desc='+cropType+'&agg_level_desc=STATE&year='+year+'&state_name='+state+'&commodity_desc='+crop+'&statisticcat_desc=PRODUCTION';
+}

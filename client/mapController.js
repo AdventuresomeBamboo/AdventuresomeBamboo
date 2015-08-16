@@ -6,6 +6,7 @@ angular.module('map', [])
   .controller('mapController', function($scope, $http){
     // Setting our $scope statename that will change on click
     // Will pass in later to get data from state selection DB
+
     $scope.init = function(){
       $('#vmap').vectorMap({ map: 'usa_en',
         backgroundColor: '#1640BC',
@@ -35,8 +36,29 @@ angular.module('map', [])
         }
       });
     };
-    $scope.init();
-    // puts our map on the page,
+
+    $scope.init(); // puts our map on the page,
+    $scope.getCrops = function(){
+      $http.post('/cropType?'+this.type)
+      .then(function(response){
+        $scope.crops = response.data;
+      })
+    };
+
+    $scope.getCropDetails = function(){
+       $http.post('/crop?'+this.crop)
+       .then(function(response){
+        $scope.details = response.data;
+        
+        $scope.details.forEach(function(dets){
+          if(dets.unit_desc === 'CWT'){
+            //send the following to graph
+            
+          }
+        })
+       })
+    }
+
   })
 
   .service('mapServe', function(){
