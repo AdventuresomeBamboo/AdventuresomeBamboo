@@ -28,10 +28,10 @@
         <!-- ng repeat crop in crop types below? should display crop type options for each state -->
     </div>
     
-    <div ng-repeat="type in types track by $index" class="displayData" id="types">
+    <span ng-repeat="type in types track by $index" class="displayData" id="types">
      <a href='#' ng-click="getCrops()">
      {{ type }}</a>
-    </div>
+    </span>
 
      <div ng-repeat="crop in crops track by $index" class="displayData" id="crops">
      <a href='#' ng-click="getCropDetails()">
