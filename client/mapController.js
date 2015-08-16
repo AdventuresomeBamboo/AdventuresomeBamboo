@@ -46,14 +46,20 @@ app.controller('mapController', function($scope, $http){
     $scope.getCropDetails = function(){
        $http.post('/crop?'+this.crop)
        .then(function(response){
-        $scope.cropInfo = [];
-        $scope.details = response.data.forEach(function(dets){
-          if(dets.unit_desc === 'CWT'){
-            var year = dets.year;
-            var val = dets.value;
-            $scope.cropInfo.push([year, val])
-          }
-        })
+        $scope.cropInfo = {};
+        var compareThisArray = [];
+        if(!response.data.length){
+          $scope.cropInfo = ['NO DATA TO DISPLAY'];
+        }else{
+          $scope.details = response.data.forEach(function(dets){
+            if(dets.unit_desc === '$')
+            $scope.cropInfo[dets.year] = {'Year' : dets['year'], 'Amount' : dets['value'], 'unit_desc' : dets['unit_desc'], 'Class' : dets['class_desc']};
+          })
+        }
        })
+    }
+    $scope.replaceChars = function(str){
+     str = str.replace(/%20/g,' ');
+     return str.replace(/%26/g,'&');
     }
   })
