@@ -47,10 +47,11 @@ angular.module('map', [])
        .then(function(response){
         $scope.cropInfo = [];
         $scope.details = response.data.forEach(function(dets){
-          if(dets.unit_desc === 'CWT'){
+          if(dets.unit_desc === 'CWT' && dets.class_desc === 'ALL CLASSES'){
             var year = dets.year;
             var val = dets.value;
-            $scope.cropInfo.push([year, val])
+            //$scope.cropInfo.push([year, val])
+            console.log(dets)
           }
         })
        })
