@@ -1,9 +1,10 @@
 // need to set up stateName require and data handling, keep getting errors
 // var cropSelections = require('../state_selection_dbs/selectionData.js');
 
-angular.module('map', [])
+var app = angular.module('map', ['ngAnimate']);
   // Defining our map controller
-  .controller('mapController', function($scope, $http){
+
+app.controller('mapController', function($scope, $http){
     // Setting our $scope statename that will change on click
     // Will pass in later to get data from state selection DB
 
