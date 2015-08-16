@@ -30,7 +30,7 @@
     
     <div ng-repeat="type in types track by $index" class="displayData" id="types">
      <a href='#' ng-click="getCrops()">
-     {{ type }}</a>
+     {{ replaceChars(type) }}</a>
     </div>
 
      <div ng-repeat="crop in crops track by $index" class="displayData" id="crops">

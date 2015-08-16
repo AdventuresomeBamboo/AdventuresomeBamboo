@@ -121,7 +121,7 @@ var showCropInfo = function (state, cropType, crop, year, req, res){
         console.log("this is production", production.data)
         res.write(JSON.stringify(production));
       }else{
-        res.write('No Data to Display') 
+        res.write('') 
       }
       res.end();
     });

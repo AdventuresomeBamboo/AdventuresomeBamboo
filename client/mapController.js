@@ -47,14 +47,30 @@ app.controller('mapController', function($scope, $http){
        $http.post('/crop?'+this.crop)
        .then(function(response){
         $scope.cropInfo = [];
-        $scope.details = response.data.forEach(function(dets){
-          if(dets.unit_desc === 'CWT' && dets.class_desc === 'ALL CLASSES'){
-            var year = dets.year;
-            var val = dets.value;
-            //$scope.cropInfo.push([year, val])
-            console.log(dets)
+        var compareThisArray = [];
+        if(!response.data.length){
+          $scope.cropInfo = ['NO DATA TO DISPLAY'];
+        }else{
+          $scope.details = response.data.forEach(function(dets){
+            if(dets.unit_desc === 'CWT' && dets.class_desc !== 'ALL CLASSES'){
+              var year = dets.year;
+              var val = dets.value;
+              var desc = dets.class_desc;
+              $scope.cropInfo.push(['Year : ',year ,'Type : ', desc, 'CWT : ', val]);
+            }
+            if(dets.class_desc === 'ALL CLASSES'){
+              var year = dets.year;
+              var val = dets.value;
+              compareThisArray.push(['Year : ',year , 'CWT : ', val]);
+            }
+          })
+          if(compareThisArray.length > $scope.cropInfo.length){
+            $scope.cropInfo = compareThisArray;
           }
-        })
+        }
        })
+    }
+    $scope.replaceChars = function(str){
+     return str.replace(/%20|%26/g,' ');
     }
   })
