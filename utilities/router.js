@@ -94,9 +94,10 @@ var getCropNames = function (state, cropType, req, res){
 };
 
 var showCropInfo = function (state, cropType, crop, year, req, res){
+  crop = crop.replace(/&/g,'%26')
   var production = {}; // <-- holder for the production values that will be passed in
-  // ^-- Above is the link for the API request check the vars in the string...
   link = 'http://nass-api.azurewebsites.net/api/api_get?source_desc=SURVEY&sector_desc=CROPS&group_desc='+cropType+'&agg_level_desc=STATE&year__or=2014&year__or=2013&year__or=2011&year__or=2010&year__or=2012&state_name='+state+'&commodity_desc='+crop+'&statisticcat_desc=PRODUCTION';
+  // ^-- Above is the link for the API request check the vars in the string...
   async([//<-- handling of asynchronous calls
     function(done){
       request.get(link, function (err, response, body){// <-- initiates connection to API server

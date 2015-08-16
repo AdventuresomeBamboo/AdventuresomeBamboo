@@ -46,32 +46,20 @@ app.controller('mapController', function($scope, $http){
     $scope.getCropDetails = function(){
        $http.post('/crop?'+this.crop)
        .then(function(response){
-        $scope.cropInfo = [];
+        $scope.cropInfo = {};
         var compareThisArray = [];
         if(!response.data.length){
           $scope.cropInfo = ['NO DATA TO DISPLAY'];
         }else{
           $scope.details = response.data.forEach(function(dets){
-            if(dets.unit_desc === 'CWT' && dets.class_desc !== 'ALL CLASSES' && dets.util_practice_desc === "ALL UTILIZATION PRACTICES"){
-              var year = dets.year;
-              var val = dets.value;
-              var desc = dets.class_desc;
-              $scope.cropInfo.push(['Year : ',year ,'Type : ', desc, 'CWT : ', val]);
-            }
-            if(dets.unit_desc === 'CWT' && dets.class_desc === 'ALL CLASSES' && dets.util_practice_desc === "ALL UTILIZATION PRACTICES"){
-              console.log(dets)
-              var year = dets.year;
-              var val = dets.value;
-              compareThisArray.push(['Year : ',year , ' CWT : ', val]);
-            }
+            if(dets.unit_desc === '$')
+            $scope.cropInfo[dets.year] = {'Year' : dets['year'], 'Amount' : dets['value'], 'unit_desc' : dets['unit_desc'], 'Class' : dets['class_desc']};
           })
-          if(compareThisArray.length > $scope.cropInfo.length){
-            $scope.cropInfo = compareThisArray;
-          }
         }
        })
     }
     $scope.replaceChars = function(str){
-     return str.replace(/%20|%26/g,' ');
+     str = str.replace(/%20/g,' ');
+     return str.replace(/%26/g,'&');
     }
   })
