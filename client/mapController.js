@@ -24,10 +24,8 @@ angular.module('map', [])
         onRegionClick: function(element, code, region){ 
 
           $scope.stateName = region;
-      // Need to fix line above this one, data binding not displaying right?
-      // Console logging right, but not showing up on html as supposed to
-      // Look at lines 17-22 in index.html ???
-      // commented out ajax for now
+          $scope.cropInfo = [];
+          $scope.crops = [];
           $http.post('/state?'+region, region)
           .then(function(response){
             $scope.types = response.data
