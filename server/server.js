@@ -16,11 +16,6 @@ var lockPort = 5911;
 /*********************** Routing ****************************/
 //Handled by router.js\\
 
-// app.get('/',function(req, res){
-// 	console.log("request url", req.url);
-//   router.requestHandler('/', req, res);
-// });
-
 app.post('/state',function(req, res){
   router.requestHandler('/state', req, res);
 });

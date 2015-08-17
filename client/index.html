@@ -82,21 +82,20 @@
                   <hr class="star-light">
                   <div>
                     <span class="col-sm-2" id="types">
-                    <h3 ng-if="cropFlag">SELECT CROP TYPE</h3>
+                    <h3 ng-if="cropFlag">SELECT A CROP TYPE</h3>
                      <a href="" ng-repeat="type in types track by $index" ng-click="getCrops()">
                        {{ replaceChars(type) }}
                       </a>
                      </span>
-                    <span class="col-md-1" ng-if="cropTypeFlag" id="crops">
-                    <h3>SELECT CROP</h3>
+                    <span class="col-md-1" id="crops">
+                    <h3 ng-if="cropTypeFlag">SELECT CROP</h3>
                       <a href="" ng-repeat="crop in crops track by $index" ng-click="getCropDetails()"> {{ crop }} </a>
                     </span>
-                    <span ng-if="flag">
-                      <linechart class="col-md-6" data="data" options="options" mode="" width="" height="">
+                    <span>
+                      <linechart ng-if="graphFlag" class="col-md-6" data="data" options="options" mode="" width="" height="">
                       </linechart>
                     </span>
                   </div>
-                  <!-- <li ng-repeat="info in cropInfo track by $index"> {{ info }} </li> -->
                   </div>
                 </div>
               </div>                 

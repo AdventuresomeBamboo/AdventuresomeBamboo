@@ -4,15 +4,12 @@
 var app = angular.module('map', ['ngAnimate', 'n3-line-chart']);
   // Defining our map controller
 
-app.controller('mapController', function($scope, $http){
-    // Setting our $scope statename that will change on click
-    // Will pass in later to get data from state selection DB
-
-    $scope.init = function(){
-      $scope.cropFlag = false;
-      $scope.cropTypeFlag = false;
-      $('#vmap').vectorMap({ map: 'usa_en',
-        backgroundColor: 'white',
+  app.controller('mapController', function($scope, $http){ // <-- setting controller
+    $scope.init = function(){ // <-- defining methods to load on init
+      $scope.cropFlag = false; // <-- starts H3 crop tag false, so it doesn't appear
+      $scope.cropTypeFlag = false; // <-- starts H3 cropType flag flase, so it won't appear
+      $('#vmap').vectorMap({ map: 'usa_en', // <--jQuery vector map
+        backgroundColor: 'white', // <-- from here ....
         borderColor: '#818181',
         borderOpacity: 0.25,
         borderWidth: 1,
@@ -24,56 +21,55 @@ app.controller('mapController', function($scope, $http){
         normalizeFunction: 'linear',
         scaleColors: ['#b6d6ff', '#005ace'],
         selectedColor: '#2c3e50',
-        selectedRegion: null, 
-        onRegionClick: function(element, code, region){ 
-          $scope.flag = false;
-          $scope.stateName = region;
-          $scope.cropInfo = [];
-          $scope.crops = [];
-          $http.post('/state?'+region, region)
-          .then(function(response){
-            $scope.types = response.data;
-            $scope.cropFlag = true;
+        selectedRegion: null,     // <-- to here sets the colors, and some styling options
+        onRegionClick: function(element, code, region){ // <-- Function to handle state click
+          $scope.graphFlag = false; // <-- resets flag on state click to hide H3
+          $scope.cropTypeFlag = false; // <-- resets flag on state click to hide H3
+          $scope.stateName = region; // <-- sets a scope var for access to angular in html
+          $http.post('/state?'+region, region) // <-- Post request to the server for crop types
+          .then(function(response){ // <-- waits for response from the server
+            $scope.types = response.data; // <-- sets an array for ng-repeat (line 86, /client/index.html)
+            $scope.cropFlag = true; // <-- sets the flag true to display the H3 tag (line 86, /client/index.html)
           })
         }
       });
     };
 
-    $scope.init(); // puts our map on the page,
-    $scope.getCrops = function(){
-      $http.post('/cropType?'+this.type)
-      .then(function(response){
-        $scope.crops = response.data;
-        $scope.cropTypeFlag = true;
+    $scope.init(); // <-- Loads the map, and inits all the methods
+
+    $scope.getCrops = function(){ // <-- function that gets the crop names based on crop type click
+      $http.post('/cropType?'+this.type) // <-- post request to the server for crop names
+      .then(function(response){ // <-- waits for server response
+        $scope.crops = response.data; // <-- array to be displayed in crop names
+        $scope.cropTypeFlag = true; // <-- turns falg true to display crop type H3 (line 91, /index.html)
       })
     };
 
-    $scope.getCropDetails = function(){
-       $http.post('/crop?'+this.crop)
-       .then(function(response){
-        $scope.cropInfo = {};
-        var compareThisArray = [];
+    $scope.getCropDetails = function(){ // <-- function to get the crop information for the graph
+      $http.post('/crop?'+this.crop) // <-- Post request the server which be built into an API call
+      .then(function(response){ // <-- waits for server response
+        $scope.cropInfo = {}; 
         if(!response.data.length){
           $scope.cropInfo = ['NO DATA TO DISPLAY'];
         }else{
           $scope.details = response.data.forEach(function(dets){
             if(dets.unit_desc === '$')
-            $scope.cropInfo[dets.year] = {'Year' : dets['year'], 'Amount' : dets['value'], 'unit_desc' : dets['unit_desc'], 'Class' : dets['class_desc']};
+              $scope.cropInfo[dets.year] = {'Year' : dets['year'], 'Amount' : dets['value'], 'unit_desc' : dets['unit_desc'], 'Class' : dets['class_desc']};
           })
         }
-       })
-       .then(function(){
+      })
+      .then(function(){ // <-- waits for cropInfo to finish populating
         $scope.data = [];
         var i = 0;
         _.each($scope.cropInfo, function(val, key){
           $scope.data[i] = {x : key, value : val}
           i++;
         })
-        $scope.flag = true;
-       })
+        $scope.graphFlag = true;
+      })
     }
-    $scope.replaceChars = function(str){
-     str = str.replace(/%20/g,' ');
-     return str.replace(/%26/g,'&');
-    }
-  })
+    $scope.replaceChars = function(str){ // <-- this function replaces unwanted characters for displaying
+     str = str.replace(/%20/g,' '); // <-- replaces API spaces with spaces
+     return str.replace(/%26/g,'&'); // <-- replaces API ampersands with '&'
+   }
+ })
