@@ -18,6 +18,7 @@ app.controller('mapController', function($scope, $http){
         enableZoom: false,
         hoverColor: '#2c3e50',
         hoverOpacity: null,
+        showTooltip: false,
         normalizeFunction: 'linear',
         scaleColors: ['#b6d6ff', '#005ace'],
         selectedColor: '#2c3e50',
