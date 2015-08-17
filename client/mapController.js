@@ -42,7 +42,7 @@ app.controller('mapController', function($scope, $http){
     $scope.init(); // puts our map on the page,
 
     $scope.getCrops = function(){
-      $http.post('/cropType?'+this.type)
+      $http.post('/cropType?'+this.type.trim())
       .then(function(response){
         $scope.crops = response.data;
         $scope.cropTypeFlag = true; 
@@ -50,7 +50,7 @@ app.controller('mapController', function($scope, $http){
     };
 
     $scope.getCropDetails = function(){
-       $http.post('/crop?'+this.crop)
+       $http.post('/crop?'+this.crop.trim())
        .then(function(response){
         $scope.cropInfo = {};
         var compareThisArray = [];

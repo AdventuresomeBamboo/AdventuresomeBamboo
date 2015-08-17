@@ -81,22 +81,24 @@
                   <h2><span ng-bind="stateName" ng-model="stateName">  {{ stateName }} </span></h2>
                   <hr class="star-light">
                   <div>
-                    <span class="col-sm-2" id="types">
-                    <h3 ng-if="cropFlag">SELECT A CROP TYPE</h3>
-                     <a href="" ng-repeat="type in types track by $index" ng-click="getCrops()">
-                       {{ replaceChars(type) }}
-                      </a>
+                    <span ng-if="cropFlag" class="col-sm-2" id="types">
+                    <h3>SELECT CROP TYPE</h3>
+                      <select ng-change="getCrops()" ng-model="type">
+                       <option ng-repeat="type in types track by $index">
+                         {{ replaceChars(type) }}
+                        </option>
+                       </select>
                      </span>
-                    <span class="col-md-1" id="crops">
-                    
-                    <div ng-if="cropTypeFlag">
-                      <h3 >SELECT CROP</h3>
-                        <a href="" ng-repeat="crop in crops track by $index" ng-click="getCropDetails()"> {{ crop }} </a>
-                    </div>
-
+                    <span ng-if="cropTypeFlag" class="col-md-1" id="crops">
+                    <h3>SELECT CROP</h3>
+                      <select ng-change="getCropDetails()" ng-model="crop">
+                          <option ng-repeat="crop in crops track by $index"> 
+                          {{ crop }} 
+                          </option>
+                      </select>
                     </span>
                     <span>
-                      <linechart ng-if="graphFlag" data="data" options="options" mode="" width="" height="">
+                      <linechart ng-if="graphFlag" class="col-md-6" data="data" options="options" mode="" width="" height="">
                       </linechart>
                     </span>
                   </div>
