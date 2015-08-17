@@ -1,7 +1,7 @@
 // need to set up stateName require and data handling, keep getting errors
 // var cropSelections = require('../state_selection_dbs/selectionData.js');
 
-var app = angular.module('map', ['ngAnimate']);
+var app = angular.module('map', ['ngAnimate', 'n3-line-chart']);
   // Defining our map controller
 
 app.controller('mapController', function($scope, $http){
@@ -24,7 +24,7 @@ app.controller('mapController', function($scope, $http){
         selectedColor: '#2c3e50',
         selectedRegion: null, 
         onRegionClick: function(element, code, region){ 
-
+          $scope.flag=false;
           $scope.stateName = region;
           $scope.cropInfo = [];
           $scope.crops = [];
@@ -57,6 +57,15 @@ app.controller('mapController', function($scope, $http){
             $scope.cropInfo[dets.year] = {'Year' : dets['year'], 'Amount' : dets['value'], 'unit_desc' : dets['unit_desc'], 'Class' : dets['class_desc']};
           })
         }
+       })
+       .then(function(){
+        $scope.flag = true;
+        $scope.data = [];
+        var i = 0;
+        _.each($scope.cropInfo, function(val, key){
+          $scope.data[i] = {x : key}
+          i++;
+        })
        })
     }
     $scope.replaceChars = function(str){
