@@ -79,12 +79,12 @@
                   <h2><span ng-bind="stateName" ng-model="stateName">  {{ stateName }} </span></h2>
                   <hr class="star-light">
                   <span ng-repeat="type in types track by $index" class="displayData" id="types">
-                   <a href='#' ng-click="getCrops()">
+                   <a href='' ng-click="getCrops()">
                      {{ replaceChars(type) }}</a>
                    </span>
 
                    <div ng-repeat="crop in crops track by $index" class="displayData" id="crops">
-                     <strong><a href='#' ng-click="getCropDetails()">
+                     <strong><a href='' ng-click="getCropDetails()">
                        {{ crop }}</a></strong>
                      </div>
 
