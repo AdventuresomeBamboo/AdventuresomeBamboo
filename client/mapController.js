@@ -9,6 +9,8 @@ app.controller('mapController', function($scope, $http){
     // Will pass in later to get data from state selection DB
 
     $scope.init = function(){
+      $scope.cropFlag = false;
+      $scope.cropTypeFlag = false;
       $('#vmap').vectorMap({ map: 'usa_en',
         backgroundColor: 'white',
         borderColor: '#818181',
@@ -24,13 +26,14 @@ app.controller('mapController', function($scope, $http){
         selectedColor: '#2c3e50',
         selectedRegion: null, 
         onRegionClick: function(element, code, region){ 
-          $scope.flag=false;
+          $scope.flag = false;
           $scope.stateName = region;
           $scope.cropInfo = [];
           $scope.crops = [];
           $http.post('/state?'+region, region)
           .then(function(response){
-            $scope.types = response.data
+            $scope.types = response.data;
+            $scope.cropFlag = true;
           })
         }
       });
@@ -41,6 +44,7 @@ app.controller('mapController', function($scope, $http){
       $http.post('/cropType?'+this.type)
       .then(function(response){
         $scope.crops = response.data;
+        $scope.cropTypeFlag = true;
       })
     };
 
@@ -59,13 +63,13 @@ app.controller('mapController', function($scope, $http){
         }
        })
        .then(function(){
-        $scope.flag = true;
         $scope.data = [];
         var i = 0;
         _.each($scope.cropInfo, function(val, key){
-          $scope.data[i] = {x : key}
+          $scope.data[i] = {x : key, value : val}
           i++;
         })
+        $scope.flag = true;
        })
     }
     $scope.replaceChars = function(str){
