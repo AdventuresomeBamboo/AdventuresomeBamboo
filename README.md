@@ -19,5 +19,5 @@ The problem is that there was no simple platform that visualizes data provided b
 Through the use of open-source code to create maps and graphs, and access to the public API's provided by the USDA, we are able to grab all of this information and simply make it easy to read.  
 
 ## How to Get Started ##
-
+Navigate to our website at [the herokuapp site](https://stark-dawn-4888.herokuapp.com)
 To get started using this service, just click on the state you wish to view information. Below the map will appear a set of choices for each particular type of data that is available to be displayed for that state. Upon selecting a choice, a graph with the requested information will then be displayed to the user. To view another type of commodity just click on the same state again, or click another state to view that state's statistics.
