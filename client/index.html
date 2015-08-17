@@ -88,11 +88,15 @@
                       </a>
                      </span>
                     <span class="col-md-1" id="crops">
-                    <h3 ng-if="cropTypeFlag">SELECT CROP</h3>
-                      <a href="" ng-repeat="crop in crops track by $index" ng-click="getCropDetails()"> {{ crop }} </a>
+                    
+                    <div ng-if="cropTypeFlag">
+                      <h3 >SELECT CROP</h3>
+                        <a href="" ng-repeat="crop in crops track by $index" ng-click="getCropDetails()"> {{ crop }} </a>
+                    </div>
+
                     </span>
                     <span>
-                      <linechart ng-if="graphFlag" class="col-md-6" data="data" options="options" mode="" width="" height="">
+                      <linechart ng-if="graphFlag" data="data" options="options" mode="" width="" height="">
                       </linechart>
                     </span>
                   </div>
