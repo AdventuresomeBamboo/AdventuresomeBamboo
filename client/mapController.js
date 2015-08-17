@@ -50,24 +50,49 @@ app.controller('mapController', function($scope, $http){
         $scope.cropInfo = {};
         var compareThisArray = [];
         if(!response.data.length){
-          $scope.cropInfo = ['NO DATA TO DISPLAY'];
+          $scope.cropInfo = false;
         }else{
           $scope.details = response.data.forEach(function(dets){
-            if(dets.unit_desc === '$')
-            $scope.cropInfo[dets.year] = {'Year' : dets['year'], 'Amount' : dets['value'], 'unit_desc' : dets['unit_desc'], 'Class' : dets['class_desc']};
+            if(dets.unit_desc === '$'){
+              $scope.cropInfo[dets.year] = {'Year' : dets['year'], 'Amount' : dets['value'], 'unit_desc' : dets['unit_desc'], 'Class' : dets['class_desc']}
+            }
           })
         }
        })
        .then(function(){
+
         $scope.flag = true;
         $scope.data = [];
-        var i = 0;
+        var i = 0; 
         _.each($scope.cropInfo, function(val, key){
-          $scope.data[i] = {x : key}
-          i++;
+            var amount = val["Amount"].replace(/,/g, ""); 
+            var date = new Date(key)
+            $scope.data[i] = {"x": date, "amount": Number(amount)};
+            i++
         })
-       })
-    }
+
+       console.log($scope.data)
+
+
+
+          $scope.options = {
+            axes: {
+              x: {type: "date", ticksInterval: 1}
+            },
+            series: [
+              {
+                y: "amount",
+                label: "Production",
+                color: "#9467bd"
+              }
+            ]
+        }
+    })
+        if ($scope.cropInfo){
+          
+        }
+  }
+
     $scope.replaceChars = function(str){
      str = str.replace(/%20/g,' ');
      return str.replace(/%26/g,'&');
