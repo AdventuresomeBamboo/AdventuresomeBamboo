@@ -9,8 +9,8 @@ var router = require('../utilities/router.js'); // Request handling-routing
 console.log(__dirname);
 app.use(express.static(__dirname + '/../client'));
 
-var port = process.env.PORT || 5678;
-
+var openPort = 5678;
+var lockPort = 5911;
 
 
 /*********************** Routing ****************************/
@@ -34,6 +34,7 @@ app.post('/crop',function(req, res, next){
 });
 
 
-http.createServer(app).listen(port, function(){
-  console.log('Server listening on port',port)
+http.createServer(app).listen(openPort, function(){
+  console.log('Server listening on port',openPort)
 }); // <-- initialize server for http
+https.createServer(app).listen(lockPort); // <-- initial
