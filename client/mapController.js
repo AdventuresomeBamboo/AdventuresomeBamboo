@@ -9,6 +9,9 @@ app.controller('mapController', function($scope, $http){
     // Will pass in later to get data from state selection DB
 
     $scope.init = function(){
+      $scope.cropFlag = false; 
+      $scope.cropTypeFlag = false; 
+
       $('#vmap').vectorMap({ map: 'usa_en',
         backgroundColor: 'white',
         borderColor: '#818181',
@@ -24,23 +27,25 @@ app.controller('mapController', function($scope, $http){
         selectedColor: '#2c3e50',
         selectedRegion: null, 
         onRegionClick: function(element, code, region){ 
-          $scope.flag=false;
+          $scope.graphFlag = false;
+          $scope.cropTypeFlag = false; 
           $scope.stateName = region;
-          $scope.cropInfo = [];
-          $scope.crops = [];
           $http.post('/state?'+region, region)
           .then(function(response){
             $scope.types = response.data
+            $scope.cropFlag = true;
           })
         }
       });
     };
 
     $scope.init(); // puts our map on the page,
+
     $scope.getCrops = function(){
       $http.post('/cropType?'+this.type)
       .then(function(response){
         $scope.crops = response.data;
+        $scope.cropTypeFlag = true; 
       })
     };
 
@@ -50,7 +55,7 @@ app.controller('mapController', function($scope, $http){
         $scope.cropInfo = {};
         var compareThisArray = [];
         if(!response.data.length){
-          $scope.cropInfo = false;
+          $scope.cropInfo = ["NO DATA AVAILABLE"];
         }else{
           $scope.details = response.data.forEach(function(dets){
             if(dets.unit_desc === '$'){
@@ -61,7 +66,7 @@ app.controller('mapController', function($scope, $http){
        })
        .then(function(){
 
-        $scope.flag = true;
+        $scope.graphFlag = true;
         $scope.data = [];
         var i = 0; 
         _.each($scope.cropInfo, function(val, key){
@@ -71,14 +76,11 @@ app.controller('mapController', function($scope, $http){
             i++
         })
 
-       console.log($scope.data)
-
-
-
           $scope.options = {
             axes: {
               x: {type: "date", ticksInterval: 1}
             },
+
             series: [
               {
                 y: "amount",
@@ -88,9 +90,7 @@ app.controller('mapController', function($scope, $http){
             ]
         }
     })
-        if ($scope.cropInfo){
-          
-        }
+    
   }
 
     $scope.replaceChars = function(str){

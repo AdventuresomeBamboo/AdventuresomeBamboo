@@ -23,6 +23,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.3/ui-bootstrap.js"></script>
   <script src="/jqvmap-stable/jqvmap/jquery.vmap.js" type="text/javascript" ></script>
   <script src="/jqvmap-stable/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.20/require.min.js"></script>
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/line-chart/1.1.4/line-chart.min.js"></script>
@@ -79,16 +80,25 @@
                 <div class="col-lg-12 text-center">
                   <h2><span ng-bind="stateName" ng-model="stateName">  {{ stateName }} </span></h2>
                   <hr class="star-light">
-                  <span ng-repeat="type in types track by $index" class="displayData" id="types">
-                   <a href='' ng-click="getCrops()">
-                     {{ replaceChars(type) }}</a>
-                   </span>
-                  <div ng-repeat="crop in crops track by $index" class="displayData" id="crops">
-                    <a href='' ng-click="getCropDetails()"> {{ crop }} </a>
-                  </div>
-                  <!-- <li ng-repeat="info in cropInfo track by $index"> {{ info }} </li> -->
-                  <div ng-if="flag">
-                    <linechart data="data" options="options" mode="" width="" height=""></linechart>
+                  <div>
+                    <span class="col-sm-2" id="types">
+                    <h3 ng-if="cropFlag">SELECT A CROP TYPE</h3>
+                     <a href="" ng-repeat="type in types track by $index" ng-click="getCrops()">
+                       {{ replaceChars(type) }}
+                      </a>
+                     </span>
+                    <span class="col-md-1" id="crops">
+                    
+                    <div ng-if="cropTypeFlag">
+                      <h3 >SELECT CROP</h3>
+                        <a href="" ng-repeat="crop in crops track by $index" ng-click="getCropDetails()"> {{ crop }} </a>
+                    </div>
+
+                    </span>
+                    <span>
+                      <linechart ng-if="graphFlag" data="data" options="options" mode="" width="" height="">
+                      </linechart>
+                    </span>
                   </div>
                   </div>
                 </div>
