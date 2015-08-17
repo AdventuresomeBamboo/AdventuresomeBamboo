@@ -107,10 +107,10 @@
             <a href="#page-top"></a>
           </li>
           <li class="page-scroll">
-            <a href="#portfolio">Map</a>
+            <a href="#map">Map</a>
           </li>
           <li class="page-scroll">
-            <a href="#about">Crop Types</a>
+            <a href="#croptypes">Crop Types</a>
           </li>
         </ul>
       </div>
@@ -120,7 +120,7 @@
     <!-- /.container-fluid -->
   </nav>
 
-  <section id="portfolio">
+  <section id="map">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
@@ -130,8 +130,7 @@
             <!-- should be displaying stateName on click -->
             <div id="stateInfo">
               <!-- should be displaying stateName on click here too -->
-
-              <!-- ng repeat crop in crop types below? should display crop type options for each state --><div class="container success" id="about">
+              <div class="container success" id="croptypes">
               <div class="row">
                 <div class="col-lg-12 text-center">
                   <h2><span ng-bind="stateName" ng-model="stateName">  {{ stateName }} </span></h2>
@@ -142,8 +141,8 @@
                    </span>
 
                    <div ng-repeat="crop in crops track by $index" class="displayData" id="crops">
-                     <a href='#' ng-click="getCropDetails()">
-                       {{ crop }}</a>
+                     <strong><a href='#' ng-click="getCropDetails()">
+                       {{ crop }}</a></strong>
                      </div>
 
                      <ul class="displayData" id="cropInfo">
