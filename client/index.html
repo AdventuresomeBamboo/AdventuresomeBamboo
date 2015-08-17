@@ -53,10 +53,10 @@
             <a href="#page-top"></a>
           </li>
           <li class="page-scroll">
-            <a href="#portfolio">Map</a>
+            <a href="#map">Map</a>
           </li>
           <li class="page-scroll">
-            <a href="#about">Crop Types</a>
+            <a href="#croptypes">Crop Types</a>
           </li>
         </ul>
       </div>
@@ -65,7 +65,7 @@
     <!-- /.container-fluid -->
   </nav>
 
-  <section id="portfolio">
+  <section id="map">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
@@ -75,17 +75,15 @@
             <!-- should be displaying stateName on click -->
             <div id="stateInfo">
               <!-- should be displaying stateName on click here too -->
-
-              <!-- ng repeat crop in crop types below? should display crop type options for each state --><div class="container success" id="about">
+              <div class="container success" id="croptypes">
               <div class="row">
                 <div class="col-lg-12 text-center">
                   <h2><span ng-bind="stateName" ng-model="stateName">  {{ stateName }} </span></h2>
                   <hr class="star-light">
                   <span ng-repeat="type in types track by $index" class="displayData" id="types">
-                   <a href='#' ng-click="getCrops()">
+                   <a href='' ng-click="getCrops()">
                      {{ replaceChars(type) }}</a>
                    </span>
-
                   <div ng-repeat="crop in crops track by $index" class="displayData" id="crops">
                     <a href='#' ng-click="getCropDetails()"> {{ crop }} </a>
                   </div>
@@ -115,7 +113,7 @@
             <h3>Check us out on GitHub</h3>
             <ul class="list-inline">
               <li>
-                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                <a href="https://github.com/AdventuresomeBamboo" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
               </li>
             </ul>
           </div>
