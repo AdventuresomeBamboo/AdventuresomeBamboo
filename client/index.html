@@ -24,6 +24,9 @@
   <script src="/jqvmap-stable/jqvmap/jquery.vmap.js" type="text/javascript" ></script>
   <script src="/jqvmap-stable/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.20/require.min.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/line-chart/1.1.4/line-chart.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.css">
   <!-- <link rel="stylesheet" type="text/css" href="styling.css" /> -->
   <link rel="stylesheet" type="text/css" href="/jqvmap-stable/jqvmap/jqvmap.css" media="screen" />
@@ -43,7 +46,6 @@
         </button>
         <a class="navbar-brand" href="#page-top">Adventuresome Bamboo</a>
       </div>
-
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
@@ -82,15 +84,13 @@
                    <a href='' ng-click="getCrops()">
                      {{ replaceChars(type) }}</a>
                    </span>
-
-                   <div ng-repeat="crop in crops track by $index" class="displayData" id="crops">
-                     <strong><a href='' ng-click="getCropDetails()">
-                       {{ crop }}</a></strong>
-                     </div>
-
-                     <ul class="displayData" id="cropInfo">
-                      <li ng-repeat="info in cropInfo track by $index"> {{ info }} </li>
-                    </ul>
+                  <div ng-repeat="crop in crops track by $index" class="displayData" id="crops">
+                    <a href='#' ng-click="getCropDetails()"> {{ crop }} </a>
+                  </div>
+                  <!-- <li ng-repeat="info in cropInfo track by $index"> {{ info }} </li> -->
+                  <div ng-if="flag">
+                    <linechart data="data" options="options" mode="" width="" height=""></linechart>
+                  </div>
                   </div>
                 </div>
               </div>                 
