@@ -27,7 +27,7 @@
                         $('.tab-selected').removeClass('tab-selected');
                         $(this).addClass('tab-selected');
                         $('.map').css('z-index', '0');
-                        $('#vmap-'+this.id).parent().css('z-index', '1');
+                        $('#vmap-'+this.id).parent().css('z-index', '-1');
                     });
                 });
                 $('h2:first').addClass('tab-selected');
@@ -154,7 +154,7 @@
         </div>
         <h2 id="northamerica">North America</h2>
         <div class="map">
-            <div id="vmap-northamerica" style="width: 600px; height: 400px;"></div>
+            <div id="vmap-northamerica" style="max-width: 90%; max-height: 80%;"></div>
         </div>
         <h2 id="southamerica">South America</h2>
         <div class="map">

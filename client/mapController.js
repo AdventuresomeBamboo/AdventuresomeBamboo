@@ -21,7 +21,7 @@ app.controller('mapController', function($scope, $http){
         enableZoom: false,
         hoverColor: '#2c3e50',
         hoverOpacity: null,
-        showTooltip: false,
+        showTooltip: true,
         normalizeFunction: 'linear',
         scaleColors: ['#b6d6ff', '#005ace'],
         selectedColor: '#2c3e50',
@@ -84,7 +84,7 @@ app.controller('mapController', function($scope, $http){
             series: [
               {
                 y: "amount",
-                label: "Production",
+                label: "Production in US Dollars",
                 color: "#9467bd"
               }
             ]
